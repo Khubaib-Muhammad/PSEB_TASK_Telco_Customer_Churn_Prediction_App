@@ -305,11 +305,7 @@ else:
         st.markdown("Explore classification validation indicators and threshold curves for each classifier model.")
         
         sel_model = st.selectbox("Choose a model to analyze", ["Logistic Regression", "Decision Tree", "Random Forest"])
-        
-        # Prepare test sets
-        import train_test_split_util
-        from sklearn.model_selection import train_test_split
-        
+
         # Build a pipeline-ready dataframe
         raw_data = df_raw.copy()
         raw_data['TotalCharges'] = pd.to_numeric(raw_data['TotalCharges'], errors='coerce').fillna(0)
