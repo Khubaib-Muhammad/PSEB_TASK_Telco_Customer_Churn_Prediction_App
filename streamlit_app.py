@@ -22,10 +22,15 @@ st.set_page_config(
 )
 
 # --- Caching Data & Models ---
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+
 @st.cache_data
 def load_data():
-    df_path = "/content/Telco-Customer-Churn.csv"
-    if os.path.exists(df_path):
+    df_path = BASE_DIR / "Telco-Customer-Churn.csv"
+
+    if df_path.exists():
         return pd.read_csv(df_path)
     else:
         st.error(f"Dataset not found at {df_path}. Please verify the path.")
